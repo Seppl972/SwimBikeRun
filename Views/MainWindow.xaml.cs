@@ -19,7 +19,8 @@ namespace SwimBikeRun
         public MainWindow()
         {
             InitializeComponent();
+            var datenbankzugriff = new Data.Datenbankzugriff("Data Source=trainingseinheiten.db");
+            datenbankzugriff.DbInitialisieren();
         }
-
     }
 }
