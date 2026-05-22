@@ -8,6 +8,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using SwimBikeRun.Data;
+using SwimBikeRun.Models;
+
 
 namespace SwimBikeRun
 {
@@ -16,11 +20,15 @@ namespace SwimBikeRun
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly ApplicationDbContext _dbContext;
+
+        public MainWindow(ApplicationDbContext dbContext)
         {
             InitializeComponent();
-            var datenbankzugriff = new Data.Datenbankzugriff("Data Source=trainingseinheiten.db");
-            datenbankzugriff.DbInitialisieren();
+            _dbContext = dbContext;
+
+            // Datenbank beim Start anlegen/migrieren
+            _dbContext.Database.EnsureCreated();
         }
     }
 }
