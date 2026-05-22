@@ -6,7 +6,43 @@
         xmlns:local="clr-namespace:SwimBikeRun"
         mc:Ignorable="d"
         Title="SwimBikeRun" Height="450" Width="800">
-    <Grid>
+    
+    <DockPanel>
+        <!-- Top: Toolbar -->
+        <StackPanel DockPanel.Dock="Top" 
+                    Orientation="Horizontal" 
+                    Background="DarkOrange" 
+                    Height="30">
+            <Button Content="Einstellungen" Width="80" Margin="5"/>
+            <Button Content="Neu" Width="80" Margin="5"/>
+            <Button Content="Speichern" Width="80" Margin="5"/>
+            <Button Content="Löschen" Width="80" Margin="5"/>
+            <Button Content="Exportieren" Width="80" Margin="5"/>
+        </StackPanel>
 
-    </Grid>
+        <!-- Left: Navigation -->
+        <StackPanel DockPanel.Dock="Left" 
+                    Background="DarkOrange" 
+                    Width="100">
+            <Button Content="Swim" 
+                    Height="45" 
+                    Margin="10,5"/>
+            <Button Content="Bike" 
+                    Height="45" 
+                    Margin="10,5"/>
+            <Button Content="Run" 
+                    Height="45" 
+                    Margin="10,5"/>
+        </StackPanel>
+        
+        <!-- Center: Hauptbereich -->
+        <ContentControl x:Name="Hauptansicht" 
+                        Background="White">
+            <TextBlock Text="Hauptansicht" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"/>
+        </ContentControl>
+
+    </DockPanel>
+    
 </Window>
