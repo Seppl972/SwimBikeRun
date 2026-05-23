@@ -29,6 +29,24 @@ namespace SwimBikeRun
 
             // Datenbank beim Start anlegen/migrieren
             _dbContext.Database.EnsureCreated();
+
+            // Testeintrag hinzufügen (nur wenn DB leer)
+            if (!_dbContext.Trainingseinheiten.Any())
+            {
+                _dbContext.Trainingseinheiten.Add(new Trainingseinheit
+                {
+                    Id = 1,
+                    Datum = DateTime.Today,
+                    Sportart = "Run",
+                    DauerMinuten = 60,
+                    DistanzKm = 8.5,
+                    Notiz = "Erstes Trainingseinheit - Testeintrag"
+                });
+                _dbContext.SaveChanges();
+            }
+
+            // ListView mit Daten aus der DB befüllen
+            WorkoutsListView.ItemsSource = _dbContext.Trainingseinheiten.ToList();
         }
     }
 }

@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SwimBikeRun.Migrations
 {
+    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
-        // Up() = SQL um die Tabelle Trainingseinheiten anzulegen
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -17,7 +18,7 @@ namespace SwimBikeRun.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Datum = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Sportart = table.Column<string>(type: "TEXT", nullable: false),
                     DauerMinuten = table.Column<int>(type: "INTEGER", nullable: false),
                     DistanzKm = table.Column<double>(type: "REAL", nullable: false),
                     Notiz = table.Column<string>(type: "TEXT", nullable: true)
@@ -28,7 +29,7 @@ namespace SwimBikeRun.Migrations
                 });
         }
 
-        // Down() = SQL um sie wieder zu löschen (Rollback)
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

@@ -11,7 +11,7 @@ using SwimBikeRun.Data;
 namespace SwimBikeRun.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260522231645_InitialCreate")]
+    [Migration("20260523000102_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,11 +35,11 @@ namespace SwimBikeRun.Migrations
                     b.Property<double>("DistanzKm")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("Notiz")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Notiz")
+                    b.Property<string>("Sportart")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
