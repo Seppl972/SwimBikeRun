@@ -1,0 +1,37 @@
+﻿<!-- WorkoutAnlegenView.xaml -->
+<!-- Nur deine Felder, kein Header/Sidebar nötig -->
+<UserControl x:Class="SwimBikeRun.Views.WorkoutAnlegenView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      d:DesignHeight="425" d:DesignWidth="365">
+
+    <StackPanel Margin="20" Background="White">
+        <TextBlock Text="Neues Workout anlegen" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <TextBlock Text="Datum"/>
+        <DatePicker SelectedDate="{Binding Datum}" Margin="0,0,0,10"/>
+
+        <TextBlock Text="Sportart"/>
+        <TextBox Text="{Binding Sportart}" Padding="5" Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="1"/>
+
+        <TextBlock Text="Dauer (Minuten)"/>
+        <TextBox Text="{Binding DauerMinuten}" Padding="5" Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="1"/>
+
+        <TextBlock Text="Distanz (km)"/>
+        <TextBox Text="{Binding DistanzKm}" Padding="5" Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="1"/>
+
+        <TextBlock Text="Notiz"/>
+        <TextBox Text="{Binding Notiz}" Padding="5" Margin="0,0,0,20" BorderBrush="Gray" BorderThickness="1"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+            <Button Content="Speichern" Command="{Binding SpeichernCommand}" 
+            Width="100" Padding="10,5" Margin="0,0,10,0"/>
+            <Button Content="Zurück" Command="{Binding ZurückCommand}" 
+            Width="100" Padding="10,5"/>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

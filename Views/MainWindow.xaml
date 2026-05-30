@@ -1,55 +1,49 @@
-﻿<Window x:Class="SwimBikeRun.MainWindow"
+﻿<Window x:Class="SwimBikeRun.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SwimBikeRun"
+		xmlns:views="clr-namespace:SwimBikeRun.Views"
+		xmlns:vm="clr-namespace:SwimBikeRun.ViewModels"
         mc:Ignorable="d"
         Title="SwimBikeRun" Height="450" Width="800">
-    
-    <DockPanel>
-        <!-- Top: Toolbar -->
-        <StackPanel DockPanel.Dock="Top" 
-                    Orientation="Horizontal" 
-                    Background="DarkOrange" 
-                    Height="30">
-            <Button Content="Einstellungen" Width="80" Margin="5"/>
-            <Button Content="Neu" Width="80" Margin="5"/>
-            <Button Content="Speichern" Width="80" Margin="5"/>
-            <Button Content="Löschen" Width="80" Margin="5"/>
-            <Button Content="Exportieren" Width="80" Margin="5"/>
-        </StackPanel>
 
-        <!-- Left: Navigation -->
-        <StackPanel DockPanel.Dock="Left" 
-                    Background="DarkOrange" 
-                    Width="100">
-            <Button Content="Swim" 
-                    Height="45" 
-                    Margin="10,5"/>
-            <Button Content="Bike" 
-                    Height="45" 
-                    Margin="10,5"/>
-            <Button Content="Run" 
-                    Height="45" 
-                    Margin="10,5"/>
-        </StackPanel>
+	<!-- DataTemplates: WPF weiß welche View zu welchem ViewModel gehört -->
+	<Window.Resources>
+		<DataTemplate DataType="{x:Type vm:WorkoutListeViewModel}">
+			<views:WorkoutListeView/>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type vm:WorkoutAnlegenViewModel}">
+			<views:WorkoutAnlegenView/>
+		</DataTemplate>
+	</Window.Resources>
 
-        <!-- Center: Hauptbereich - Die Tabelle für deine Trainingseinheiten--> 
-        <ListView x:Name="WorkoutsListView" Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <!-- StringFormat formatiert das Datum schön deutsch (Tag.Monat.Jahr) -->
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="50"/>
-                    <GridViewColumn Header="Datum" DisplayMemberBinding="{Binding Datum, StringFormat=dd.MM.yyyy}" Width="90"/>
-                    <GridViewColumn Header="Sportart" DisplayMemberBinding="{Binding Sportart}" Width="110"/>
-                    <GridViewColumn Header="Dauer (Min)" DisplayMemberBinding="{Binding DauerMinuten}" Width="80"/>
-                    <GridViewColumn Header="Distanz (km)" DisplayMemberBinding="{Binding DistanzKm}" Width="80"/>
-                    <GridViewColumn Header="Notiz" DisplayMemberBinding="{Binding Notiz}" Width="300"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+	<!-- Layout der Anwendung - Aufgeteilt in Header, Linke Spalte & dynamische Hauptansicht-->
+	<DockPanel>
+		<!-- Header: Toolbar für CRUD-Operationen -->
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="DarkOrange" Height="30">
+			<Button Content="Einstellungen" Width="80" Margin="10,5"/>
+			<Button Content="Neu" Command="{Binding NeuCommand}" Width="80" Margin="5"/>
+			<Button Content="Anzeigen"  Width="80" Margin="5"/>
+			<Button Content="Bearbeiten"  Width="80" Margin="5"/>
+			<Button Content="Löschen"  Width="80" Margin="5" />
+		</StackPanel>
 
-    </DockPanel>
-    
+		<!-- Sidebar links: Navigation für einen Disziplinen -->
+		<StackPanel DockPanel.Dock="Left" Background="DarkOrange" Width="100">
+			<Button Content="Swim" Height="45" Margin="10,5"/>
+			<Button Content="Bike" Height="45" Margin="10,5"/>
+			<Button Content="Run"  Height="45" Margin="10,5"/>
+		</StackPanel>
+
+		<!-- Temporär zum Debuggen: zeigt welches ViewModel aktiv ist -->
+		<TextBlock DockPanel.Dock="Bottom" Text="{Binding AktuelleView}"
+                   Background="Yellow" FontSize="12"/>
+
+		<!-- Hauptbereich -->
+		<ContentControl Content="{Binding AktuelleView}"/>
+
+	</DockPanel>
+
 </Window>

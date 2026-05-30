@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SwimBikeRun.Data;
+using SwimBikeRun.Views;
+using SwimBikeRun.ViewModels;
 using System.Windows;
 
 namespace SwimBikeRun
@@ -27,6 +29,9 @@ namespace SwimBikeRun
             // SQLite + EF Core
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite("Data Source=swimbikerun.db"));
+
+            // ViewModels registrieren
+            services.AddTransient<MainViewModel>();
 
             // Fenster registrieren
             services.AddTransient<MainWindow>();
