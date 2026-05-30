@@ -5,9 +5,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:models="clr-namespace:SwimBikeRun.Models"       
       mc:Ignorable="d"
       d:DesignHeight="425" d:DesignWidth="365">
 
+    <!-- Für Integration von Sportarten Enum in ComboBox -->
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="SportartTyp"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:SportartTyp"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
+    
     <StackPanel Margin="20" Background="White">
         <TextBlock Text="Neues Workout anlegen" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
 
@@ -15,8 +29,9 @@
         <DatePicker SelectedDate="{Binding Datum}" Margin="0,0,0,10"/>
 
         <TextBlock Text="Sportart"/>
-        <TextBox Text="{Binding Sportart}" Padding="5" Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="1"/>
-
+        <ComboBox SelectedItem="{Binding Sportart}" Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="1"
+                  ItemsSource="{Binding Source={StaticResource SportartTyp}}"/>
+        
         <TextBlock Text="Dauer (Minuten)"/>
         <TextBox Text="{Binding DauerMinuten}" Padding="5" Margin="0,0,0,10" BorderBrush="Gray" BorderThickness="1"/>
 

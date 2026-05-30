@@ -13,7 +13,7 @@ namespace SwimBikeRun.ViewModels
 
         // Felder für das Formular
         public DateTime Datum { get; set; } = DateTime.Today;
-        public string Sportart { get; set; } = "";
+        public SportartTyp Sportart { get; set; }
         public int DauerMinuten { get; set; }
         public double DistanzKm { get; set; }
         public string Notiz { get; set; } = "";
