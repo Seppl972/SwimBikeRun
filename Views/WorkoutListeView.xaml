@@ -7,7 +7,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <!-- Listenansicht der Trainingseinheiten -->
-    <ListView ItemsSource="{Binding Trainingseinheiten}">
+    <ListView ItemsSource="{Binding Trainingseinheiten}"
+              SelectedItem="{Binding AusgewähltesWorkout}">
         <ListView.View>
             <GridView>
                 <!-- StringFormat formatiert das Datum schön deutsch (Tag.Monat.Jahr) -->

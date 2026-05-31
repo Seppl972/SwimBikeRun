@@ -23,7 +23,7 @@
 	<DockPanel>
 		<!-- Header: Toolbar für CRUD-Operationen -->
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="DarkOrange" Height="30">
-			<Button Content="Einstellungen" Width="80" Margin="10,5"/>
+			<Button Content="Einstellungen"  Width="80" Margin="10,5"/>
 			<Button Content="Neu" Command="{Binding NeuCommand}" Width="80" Margin="5"/>
 			<Button Content="Anzeigen"  Width="80" Margin="5"/>
 			<Button Content="Bearbeiten"  Width="80" Margin="5"/>
