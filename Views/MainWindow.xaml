@@ -42,7 +42,7 @@
                    Background="Yellow" FontSize="12"/>
 
 		<!-- Hauptbereich -->
-		<ContentControl Content="{Binding AktuelleView}"/>
+		<ContentControl Content="{Binding AktuelleView}" Margin="50"/>
 
 	</DockPanel>
 

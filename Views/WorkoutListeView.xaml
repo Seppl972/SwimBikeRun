@@ -12,12 +12,13 @@
         <ListView.View>
             <GridView>
                 <!-- StringFormat formatiert das Datum schön deutsch (Tag.Monat.Jahr) -->
-                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="50"/>
-                <GridViewColumn Header="Datum" DisplayMemberBinding="{Binding Datum, StringFormat=dd.MM.yyyy}" Width="90"/>
-                <GridViewColumn Header="Sportart" DisplayMemberBinding="{Binding Sportart}" Width="110"/>
-                <GridViewColumn Header="Dauer (Min)" DisplayMemberBinding="{Binding DauerMinuten}" Width="80"/>
-                <GridViewColumn Header="Distanz (km)" DisplayMemberBinding="{Binding DistanzKm}" Width="80"/>
-                <GridViewColumn Header="Notiz" DisplayMemberBinding="{Binding Notiz}" Width="300"/>
+                <GridViewColumn Header="// ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                <GridViewColumn Header="// Datum" DisplayMemberBinding="{Binding Datum, StringFormat=dd.MM.yyyy}" Width="90"/>
+                <GridViewColumn Header="// Sportart" DisplayMemberBinding="{Binding Sportart}" Width="80"/>
+                <GridViewColumn Header="// Dauer (Min)" DisplayMemberBinding="{Binding DauerMinuten}" Width="90"/>
+                <GridViewColumn Header="// Distanz (km)" DisplayMemberBinding="{Binding DistanzKm}" Width="90"/>
+                <GridViewColumn Header="// Durchschnitt-Pace (km/h)" DisplayMemberBinding="{Binding DistanzKm}" Width="150"/>
+                <GridViewColumn Header="// Notiz" DisplayMemberBinding="{Binding Notiz}" Width="200"/>
             </GridView>
         </ListView.View>
     </ListView>
