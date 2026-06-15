@@ -1,0 +1,82 @@
+╔══════════════════════════════════════════════════════════════════╗
+║              🏊 🚴 🏃  S W I M B I K E R U N  🏃 🚴 🏊         ║
+║                     C# Projekt – TODO-Liste                      ║
+╚══════════════════════════════════════════════════════════════════╝
+
+Letzte Aktualisierung: Juni 2026
+Projekt: SwimBikeRun | Sprache: C# | Repo: GitHub
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📋  OFFENE AUFGABEN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [ ]  ✏️   WORKOUT BEARBEITEN
+            Schnelle Anpassung eines bestehenden Workouts
+            → UI-Element (Edit-Button) + ViewModel-Binding
+
+  [ ]  👁️   WORKOUT-DETAILANSICHT
+            WorkoutDetailView über „Anzeigen"-Button öffnen
+            → Navigation zur DetailView + Datenweitergabe per Parameter
+
+  [ ]  📊  STATISTISCHE AUSWERTUNGEN
+            Pace-Berechnung & Auswertungen in der Detailansicht
+
+            [ ]  Durchschnitts-Pace (km/h) automatisch
+                 berechnen und anzeigen                       ← OFFEN
+                 Formel: Pace = Distanz / Zeit (in Stunden)
+
+  [ ]  🔗  STRAVA API-ANBINDUNG
+            Automatischer Import von Aktivitäten via Strava API
+            → OAuth2-Authentifizierung + REST-Client einbinden
+
+  [ ]  🔍  FILTERUNG DER LISTE
+            Workouts nach Sportart oder Zeitraum filtern
+            → FilterViewModel + LINQ-Abfragen auf ObservableCollection
+
+  [ ]  📈  DIAGRAMME / VERLAUFSANSICHT
+            Visuelle Darstellung der Trainingsdaten über Zeit
+            → z. B. LiveCharts2 oder OxyPlot einbinden
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ✅  ERLEDIGTE AUFGABEN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  [✓]  📋  Workout-Listenansicht
+            Alle Trainingseinheiten auf einen Blick
+
+  [✓]  ➕  Workout anlegen
+            Formular mit Datum, Sportart, Dauer, Distanz und Notiz
+
+  [✓]  🏷️   Sportart-Auswahl per Dropdown
+            Enum: Schwimmen, Radfahren, Laufen
+
+  [✓]  🗑️   Workout löschen
+            Ausgewähltes Workout wird aus der Datenbank entfernt
+
+  [✓]  📐  Distanz in WorkoutListView als DistanzKm ausgeben
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📌  PRIORITÄTEN (Empfehlung)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  🔴  HOCH     →  Durchschnitts-Pace berechnen
+                   Workout bearbeiten
+  🟡  MITTEL   →  WorkoutDetailView
+                   Filterung der Liste
+  🟢  NIEDRIG  →  Strava API
+                   Diagramme / Verlaufsansicht
+
+
+══════════════════════════════════════════════════════════════════
+  💡  NOTIZEN & IDEEN
+══════════════════════════════════════════════════════════════════
+
+  - Pace-Formel:  Zeit (min) / Distanz (km)  → z. B. 5:30 min/km
+  - Strava API Docs: https://developers.strava.com/docs/reference/
+  - Für Diagramme: LiveCharts2 (NuGet) gut geeignet für WPF/MAUI
+  - GitHub Actions für automatische Build-Prüfung einrichten?
+
+══════════════════════════════════════════════════════════════════
