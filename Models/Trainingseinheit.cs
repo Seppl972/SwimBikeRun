@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Windows;
 
 // Später weitere Models ergänzen
 namespace SwimBikeRun.Models
@@ -14,8 +16,8 @@ namespace SwimBikeRun.Models
         public int Id { get; set; }
         public DateTime Datum { get; set; }
         public SportartTyp Sportart { get; set; }
-        public int DauerMinuten { get; set; }
-        public double DistanzKm { get; set; }
+        public int? DauerMinuten { get; set; }
+        public double? DistanzKm { get; set; }
         public string? Notiz { get; set; }
 
         [NotMapped] // Dieses Feld wird nicht in der Datenbank gespeichert, da es berechnet wird
@@ -25,33 +27,7 @@ namespace SwimBikeRun.Models
         // Erstmal getrennt, später vielleicht in einer Methode, die je nach Sportart die richtige Berechnung anstößt
         public Trainingseinheit()
         {
-            berechneDurchschnittsPace();
-            DurchschnittsPace = berechneDurchschnittsPace();
-        }
-
-        public double berechneDurchschnittsPace()
-        {
-            double pace = 0;
-            berechneDurchschnittLaufen();
-            berechneDurchschnittRadfahren();
-            berechneDurchschnittSchwimmen();
-            return pace;
-        }
-        public void berechneDurchschnittLaufen()
-        {
-            double paceLaufen = (DauerMinuten / DistanzKm);
-            double pace = paceLaufen;
-        }
-        public void berechneDurchschnittRadfahren()
-        {
-            double paceRadfahren = DauerMinuten / DistanzKm;
-            double pace = paceRadfahren;
-        }
-        public double berechneDurchschnittSchwimmen()
-        {
-            double paceSchwimmen = DauerMinuten / DistanzKm;
-            double DurchschnittsPace = paceSchwimmen;
-            return paceSchwimmen;
+            
         }
     }
 

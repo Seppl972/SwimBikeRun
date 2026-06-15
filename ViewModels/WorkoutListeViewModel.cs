@@ -22,6 +22,7 @@ namespace SwimBikeRun.ViewModels
             {
                 _ausgewähltesWorkout = value;
             }
+            
         }
 
         public WorkoutListeViewModel(ApplicationDbContext dbContext)
@@ -29,6 +30,7 @@ namespace SwimBikeRun.ViewModels
             _dbContext = dbContext;
             Trainingseinheiten = new ObservableCollection<Trainingseinheit>(
                 _dbContext.Trainingseinheiten.ToList()
+
             );
             LöschenCommand = new RelayCommand(Löschen);
         }
@@ -48,7 +50,8 @@ namespace SwimBikeRun.ViewModels
             Trainingseinheiten.Remove(AusgewähltesWorkout); // Auch aus der ObservableCollection entfernen, damit die UI aktualisiert wird
             AusgewähltesWorkout = null; // Auswahl zurücksetzen (Schutzmaßnahme damit dein null-Check weiter oben seinen Job machen kann)
 
-            MessageBox.Show("Workout gelöscht!");
+            // MessageBox.Show("Workout gelöscht!");
         }
+
     }
 }

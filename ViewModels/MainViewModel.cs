@@ -39,6 +39,7 @@ namespace SwimBikeRun.ViewModels
             }
         }
 
+        public ICommand PaceCommand { get; }
         public ICommand NeuCommand { get; }
         public ICommand LöschenCommand => new RelayCommand(() =>
             {
@@ -54,7 +55,7 @@ namespace SwimBikeRun.ViewModels
 
     private void OeffneWorkoutAnlegen()
         {
-            AktuelleView = new WorkoutAnlegenViewModel(_dbContext, ZurückZurListe); // dbContext weitergeben, damit die Anlegen-View auch Zugriff auf die Datenbank hat
+            AktuelleView = new WorkoutAnlegenViewModel(_dbContext, ZurückZurListe); // dbContext weitergeben, damit die Anlegen-View auch Zugriff auf die Datenbank hat            
         }
 
         private void ZurückZurListe()

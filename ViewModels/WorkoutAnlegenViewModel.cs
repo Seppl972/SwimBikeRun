@@ -37,18 +37,20 @@ namespace SwimBikeRun.ViewModels
         // Methode zum Speichern der neuen Trainingseinheit in der Datenbank
         private void Speichern()
         {
+
             var einheit = new Trainingseinheit
             {
                 Datum = Datum,
                 Sportart = Sportart,
                 DauerMinuten = DauerMinuten,
                 DistanzKm = DistanzKm,
-                DurchschnittsPace = DurchschnittsPace,
                 Notiz = Notiz
                 // Id wird automatisch von EF vergeben!
+                
             };
 
             _dbContext.Trainingseinheiten.Add(einheit);
+            BerechneDurchschnittsPace();
             _dbContext.SaveChanges();
 
             MessageBox.Show("Workout gespeichert!");
@@ -58,6 +60,12 @@ namespace SwimBikeRun.ViewModels
         public void Zurück()
         {
             _zurückAction();
+        }
+
+        // Methode zur Berechnung der DurchschnittsPace (kann später je nach Sportart angepasst werden)
+        public void BerechneDurchschnittsPace()
+        {
+            this.DurchschnittsPace = this.DistanzKm / this.DauerMinuten * 60; // km/h
         }
 
         // ?INotifyPropertyChanged-Implementierung (wird benötigt, damit die UI auf Änderungen reagiert)
