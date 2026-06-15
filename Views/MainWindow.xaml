@@ -7,9 +7,9 @@
 		xmlns:views="clr-namespace:SwimBikeRun.Views"
 		xmlns:vm="clr-namespace:SwimBikeRun.ViewModels"
         mc:Ignorable="d"
-        Title="SwimBikeRun" Height="600" Width="800">
+        Title="SwimBikeRun" Height="600" Width="800" Icon="C:\Users\sebas\source\repos\SwimBikeRun\Views\icon1.ico" >
 
-	<!-- DataTemplates: WPF weiß welche View zu welchem ViewModel gehört -->
+    <!-- DataTemplates: WPF weiß welche View zu welchem ViewModel gehört -->
 	<Window.Resources>
 		<DataTemplate DataType="{x:Type vm:WorkoutListeViewModel}">
 			<views:WorkoutListeView/>
