@@ -21,6 +21,7 @@ namespace SwimBikeRun.Migrations
                     Sportart = table.Column<string>(type: "TEXT", nullable: false),
                     DauerMinuten = table.Column<int>(type: "INTEGER", nullable: false),
                     DistanzKm = table.Column<double>(type: "REAL", nullable: false),
+                    DurchschnittsPace = table.Column<double>(type: "DOUBLE", nullable: true),
                     Notiz = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

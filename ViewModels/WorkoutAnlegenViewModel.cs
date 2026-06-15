@@ -3,7 +3,8 @@ using System.Windows.Input;         // ICommand
 using System.Windows;               // MessageBox
 using SwimBikeRun.Data;             // ApplicationDbContext
 using SwimBikeRun.Models;           // Trainingseinheit
-using SwimBikeRun.Helpers;          // RelayCommand
+using SwimBikeRun.Helpers;
+using System.Security.RightsManagement;          // RelayCommand
 
 namespace SwimBikeRun.ViewModels
 {
@@ -16,6 +17,7 @@ namespace SwimBikeRun.ViewModels
         public SportartTyp Sportart { get; set; }
         public int DauerMinuten { get; set; }
         public double DistanzKm { get; set; }
+        public double DurchschnittsPace { get; set; }
         public string Notiz { get; set; } = "";
 
 
@@ -41,6 +43,7 @@ namespace SwimBikeRun.ViewModels
                 Sportart = Sportart,
                 DauerMinuten = DauerMinuten,
                 DistanzKm = DistanzKm,
+                DurchschnittsPace = DurchschnittsPace,
                 Notiz = Notiz
                 // Id wird automatisch von EF vergeben!
             };
