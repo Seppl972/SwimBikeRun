@@ -17,7 +17,7 @@ namespace SwimBikeRun.ViewModels
         public SportartTyp Sportart { get; set; }
         public int DauerMinuten { get; set; }
         public double DistanzKm { get; set; }
-        public double DurchschnittsPace { get; set; }
+        public double? DurchschnittsPace { get; set; }
         public string Notiz { get; set; } = "";
 
 
@@ -50,7 +50,6 @@ namespace SwimBikeRun.ViewModels
             };
 
             _dbContext.Trainingseinheiten.Add(einheit);
-            BerechneDurchschnittsPace();
             _dbContext.SaveChanges();
 
             MessageBox.Show("Workout gespeichert!");
@@ -62,11 +61,6 @@ namespace SwimBikeRun.ViewModels
             _zurückAction();
         }
 
-        // Methode zur Berechnung der DurchschnittsPace (kann später je nach Sportart angepasst werden)
-        public void BerechneDurchschnittsPace()
-        {
-            this.DurchschnittsPace = this.DistanzKm / this.DauerMinuten * 60; // km/h
-        }
 
         // ?INotifyPropertyChanged-Implementierung (wird benötigt, damit die UI auf Änderungen reagiert)
         public event PropertyChangedEventHandler? PropertyChanged;

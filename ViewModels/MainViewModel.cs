@@ -39,7 +39,6 @@ namespace SwimBikeRun.ViewModels
             }
         }
 
-        public ICommand PaceCommand { get; }
         public ICommand NeuCommand { get; }
         public ICommand LöschenCommand => new RelayCommand(() =>
             {

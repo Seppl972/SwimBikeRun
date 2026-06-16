@@ -22,7 +22,7 @@ namespace SwimBikeRun.ViewModels
             {
                 _ausgewähltesWorkout = value;
             }
-            
+ 
         }
 
         public WorkoutListeViewModel(ApplicationDbContext dbContext)

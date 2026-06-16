@@ -19,12 +19,12 @@ namespace SwimBikeRun.Models
         public int? DauerMinuten { get; set; }
         public double? DistanzKm { get; set; }
         public string? Notiz { get; set; }
+        [NotMapped]
+        public double? DurchschnittsPace =>
+            DistanzKm > 0 && DauerMinuten > 0
+                ? (double) DistanzKm / DauerMinuten * 60
+                : null;
 
-        [NotMapped] // Dieses Feld wird nicht in der Datenbank gespeichert, da es berechnet wird
-        public double? DurchschnittsPace { get; set; }
-
-        // Konstruktor soll die Berechnung beim Erstellen einer Trainingseinheit berechnen
-        // Erstmal getrennt, später vielleicht in einer Methode, die je nach Sportart die richtige Berechnung anstößt
         public Trainingseinheit()
         {
             
