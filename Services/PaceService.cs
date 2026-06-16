@@ -7,7 +7,7 @@ namespace SwimBikeRun.Services
 {
     public static class PaceService
     {
-        public static double? BerechneFor(SportartTyp sportart, int? dauer, double? distanz)
+        public static double? berechneFür(SportartTyp sportart, int? dauer, double? distanz)
         {
             return sportart switch
             {

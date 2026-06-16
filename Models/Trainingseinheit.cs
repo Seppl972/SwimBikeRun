@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SwimBikeRun.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,18 +21,8 @@ namespace SwimBikeRun.Models
         public double? DistanzKm { get; set; }
         public string? Notiz { get; set; }
         [NotMapped]
-        public double? DurchschnittsPace => Sportart switch
-        {
-        SportartTyp.Laufen    => DistanzKm > 0 ? DauerMinuten / DistanzKm : null,
-        SportartTyp.Schwimmen => DistanzKm > 0 ? (DauerMinuten / DistanzKm) / 10 : null,
-        SportartTyp.Radfahren => DauerMinuten > 0 ? DistanzKm / ((double)DauerMinuten / 60) : null,
-    _   => null
-        };
+        public double? DurchschnittsPace => PaceService.berechneFür(Sportart, DauerMinuten, DistanzKm);
 
-        public Trainingseinheit()
-        {
-            
-        }
     }
 
     // Enum für die Sportarten (für Dropdown in der UI)
