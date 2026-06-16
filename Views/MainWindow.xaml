@@ -17,7 +17,10 @@
 		<DataTemplate DataType="{x:Type vm:WorkoutAnlegenViewModel}">
 			<views:WorkoutAnlegenView/>
 		</DataTemplate>
-	</Window.Resources>
+        <DataTemplate DataType="{x:Type vm:WorkoutBearbeitenViewModel}">
+            <views:WorkoutBearbeitenView/>
+        </DataTemplate>
+    </Window.Resources>
 
 	<!-- Layout der Anwendung - Aufgeteilt in Header, Linke Spalte & dynamische Hauptansicht-->
 	<DockPanel>
@@ -26,7 +29,7 @@
 			<Button Content="Einstellungen"  Width="80" Margin="10,5"/>
 			<Button Content="Neu" Command="{Binding NeuCommand}" Width="80" Margin="5"/>
 			<Button Content="Anzeigen"  Width="80" Margin="5"/>
-			<Button Content="Bearbeiten"  Width="80" Margin="5"/>
+			<Button Content="Bearbeiten"  Width="80" Margin="5" Command="{Binding BearbeitenCommand}"/>
 			<Button Content="Löschen" Command="{Binding LöschenCommand}" Width="80" Margin="5" />
 		</StackPanel>
 

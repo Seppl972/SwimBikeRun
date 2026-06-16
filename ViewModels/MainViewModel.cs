@@ -51,8 +51,23 @@ namespace SwimBikeRun.ViewModels
                     MessageBox.Show("Löschen ist vorerst nur in der Listenansicht möglich.");
                 }
             });
+        public ICommand BearbeitenCommand => new RelayCommand(() =>
+        {
+            if (AktuelleView is WorkoutListeViewModel listeViewModel)
+            {
+                var ausgewählt = listeViewModel.AusgewähltesWorkout;
 
-    private void OeffneWorkoutAnlegen()
+                if (ausgewählt == null)
+                {
+                    MessageBox.Show("Bitte erst ein Workout in der Liste auswählen!");
+                    return; // ← ohne das crasht es!
+                }
+
+                AktuelleView = new WorkoutBearbeitenViewModel(_dbContext, ausgewählt, ZurückZurListe);
+            }
+        });
+
+        private void OeffneWorkoutAnlegen()
         {
             AktuelleView = new WorkoutAnlegenViewModel(_dbContext, ZurückZurListe); // dbContext weitergeben, damit die Anlegen-View auch Zugriff auf die Datenbank hat            
         }

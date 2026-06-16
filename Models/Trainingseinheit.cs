@@ -20,9 +20,8 @@ namespace SwimBikeRun.Models
         public int? DauerMinuten { get; set; }
         public double? DistanzKm { get; set; }
         public string? Notiz { get; set; }
-        [NotMapped]
+        [NotMapped] // wird nicht in DB gespeichert, sondern nur zur Berechnung in der App verwendet
         public double? DurchschnittsPace => PaceService.berechneFür(Sportart, DauerMinuten, DistanzKm);
-
     }
 
     // Enum für die Sportarten (für Dropdown in der UI)
