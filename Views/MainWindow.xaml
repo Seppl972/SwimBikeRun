@@ -7,7 +7,7 @@
 		xmlns:views="clr-namespace:SwimBikeRun.Views"
 		xmlns:vm="clr-namespace:SwimBikeRun.ViewModels"
         mc:Ignorable="d"
-        Title="SwimBikeRun" Height="600" Width="800" Icon="C:\Users\sebas\source\repos\SwimBikeRun\Views\icon1.ico" >
+        Title="SwimBikeRun" Height="1080" Width="1920" Icon="C:\Users\sebas\source\repos\SwimBikeRun\Views\icon1.ico" >
 
     <!-- DataTemplates: WPF weiß welche View zu welchem ViewModel gehört -->
 	<Window.Resources>
@@ -38,7 +38,11 @@
 			<Button Content="Swim" Height="45" Margin="10,5"/>
 			<Button Content="Bike" Height="45" Margin="10,5"/>
 			<Button Content="Run"  Height="45" Margin="10,5"/>
-		</StackPanel>
+            <Button Content="Study"  Height="45" Margin="10,5"/>
+            <Button Content="Statistik"  Height="45" Margin="10,5"/>
+            <Button Content="API"  Height="45" Margin="10,5"/>
+            <Button Content="n8n"  Height="45" Margin="10,5"/>
+        </StackPanel>
 
 		<!-- Temporär zum Debuggen: zeigt welches ViewModel aktiv ist -->
 		<TextBlock DockPanel.Dock="Bottom" Text="{Binding AktuelleView}"
