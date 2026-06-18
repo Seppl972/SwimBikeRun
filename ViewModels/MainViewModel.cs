@@ -24,7 +24,7 @@ namespace SwimBikeRun.ViewModels
             AktuelleView = new WorkoutListeViewModel(_dbContext);    // Standardmäßig die Listenansicht anzeigen
 
             NeuCommand = new RelayCommand(OeffneWorkoutAnlegen);
-
+            AnzeigenCommand = new RelayCommand(OeffneWorkoutDetail);
         }
 
         // AktuelleView ist die Eigenschaft, die die aktuell angezeigte View steuert
@@ -40,6 +40,7 @@ namespace SwimBikeRun.ViewModels
         }
 
         public ICommand NeuCommand { get; }
+        public ICommand AnzeigenCommand { get; }
         public ICommand LöschenCommand => new RelayCommand(() =>
             {
                 if (AktuelleView is WorkoutListeViewModel listeViewModel)
@@ -51,6 +52,7 @@ namespace SwimBikeRun.ViewModels
                     MessageBox.Show("Löschen ist vorerst nur in der Listenansicht möglich.");
                 }
             });
+
         public ICommand BearbeitenCommand => new RelayCommand(() =>
         {
             if (AktuelleView is WorkoutListeViewModel listeViewModel)
@@ -71,6 +73,23 @@ namespace SwimBikeRun.ViewModels
         {
             AktuelleView = new WorkoutAnlegenViewModel(_dbContext, ZurückZurListe); // dbContext weitergeben, damit die Anlegen-View auch Zugriff auf die Datenbank hat            
         }
+
+        private void OeffneWorkoutDetail()
+        {
+            if (AktuelleView is WorkoutListeViewModel listeViewModel)
+            {
+                var ausgewählt = listeViewModel.AusgewähltesWorkout;
+
+                if (ausgewählt == null)
+                {
+                    MessageBox.Show("Bitte erst ein Workout auswählen!");
+                    return;
+                }
+
+                AktuelleView = new WorkoutDetailViewModel(ausgewählt, ZurückZurListe);
+            }
+        }
+
 
         private void ZurückZurListe()
         {
