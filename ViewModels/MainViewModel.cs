@@ -21,10 +21,11 @@ namespace SwimBikeRun.ViewModels
         {
             _dbContext = dbContext;
             _dbContext.Database.EnsureCreated();    // Datenbank beim Start anlegen/migrieren
-            AktuelleView = new WorkoutListeViewModel(_dbContext);    // Standardmäßig die Listenansicht anzeigen
+            AktuelleView = new DashboardViewModel(_dbContext);    // Standardmäßig die Listenansicht anzeigen
 
             NeuCommand = new RelayCommand(OeffneWorkoutAnlegen);
             AnzeigenCommand = new RelayCommand(OeffneWorkoutDetail);
+            DashboardCommand = new RelayCommand(OeffneDashboard);
         }
 
         // AktuelleView ist die Eigenschaft, die die aktuell angezeigte View steuert
@@ -39,6 +40,7 @@ namespace SwimBikeRun.ViewModels
             }
         }
 
+        public ICommand DashboardCommand { get; }
         public ICommand NeuCommand { get; }
         public ICommand AnzeigenCommand { get; }
         public ICommand LöschenCommand => new RelayCommand(() =>
@@ -100,6 +102,11 @@ namespace SwimBikeRun.ViewModels
         protected void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void OeffneDashboard()
+        {
+            AktuelleView = new DashboardViewModel(_dbContext);
         }
 
     }

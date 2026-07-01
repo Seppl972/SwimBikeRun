@@ -11,7 +11,9 @@
 
     <!-- DataTemplates: WPF weiß welche View zu welchem ViewModel gehört -->
 	<Window.Resources>
-		<DataTemplate DataType="{x:Type vm:WorkoutListeViewModel}">
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+
+        <DataTemplate DataType="{x:Type vm:WorkoutListeViewModel}">
 			<views:WorkoutListeView/>
 		</DataTemplate>
 		<DataTemplate DataType="{x:Type vm:WorkoutAnlegenViewModel}">
@@ -22,6 +24,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:WorkoutDetailViewModel}">
             <views:WorkoutDetailView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <views:DashboardView/>
         </DataTemplate>
     </Window.Resources>
 
@@ -38,11 +43,12 @@
 
 		<!-- Sidebar links: Navigation für einen Disziplinen -->
 		<StackPanel DockPanel.Dock="Left" Background="DarkOrange" Width="100">
-			<Button Content="Swim" Height="45" Margin="10,5"/>
+            <Button Content="Dashboard"  Height="45" Margin="10,5" Command="{Binding DashboardCommand}"/>
+            <Button Content="Swim" Height="45" Margin="10,5"/>
 			<Button Content="Bike" Height="45" Margin="10,5"/>
 			<Button Content="Run"  Height="45" Margin="10,5"/>
+            <Button Content="Fueling"  Height="45" Margin="10,5"/>
             <Button Content="Study"  Height="45" Margin="10,5"/>
-            <Button Content="Statistik"  Height="45" Margin="10,5"/>
             <Button Content="API"  Height="45" Margin="10,5"/>
             <Button Content="n8n"  Height="45" Margin="10,5"/>
         </StackPanel>

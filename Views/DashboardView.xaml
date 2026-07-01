@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="SwimBikeRun.Views.DashboardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <StackPanel Margin="20" Background="White">
+
+        <!-- Header -->
+        <DockPanel Margin="0,0,0,20">
+            <TextBlock Text="{Binding AktuelleWoche}" 
+                       FontSize="12" Foreground="Gray"
+                       DockPanel.Dock="Right" VerticalAlignment="Center"/>
+            <TextBlock Text="Dashboard" FontSize="22" FontWeight="Bold"/>
+        </DockPanel>
+
+        <!-- Deload Hinweis -->
+        <Border Background="#FFF3CD" CornerRadius="5" Padding="10" Margin="0,0,0,15"
+                Visibility="{Binding IstDeloadWoche, Converter={StaticResource BoolToVisibility}}">
+            <TextBlock Text="🔄 Deload-Woche – Volumen reduzieren!" FontWeight="Bold"/>
+        </Border>
+
+        <!-- Wochenvolumen Ziel -->
+        <Border Background="#F5F5F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <DockPanel>
+                    <TextBlock Text="{Binding GesamtStunden, StringFormat={}Gesamt: {0:F1}h}"
+                               FontSize="16" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding WochenZiel, StringFormat={}/  Ziel: {0}h}"
+                               FontSize="14" Foreground="Gray" Margin="5,0,0,0"
+                               VerticalAlignment="Center"/>
+                </DockPanel>
+                <!-- ✅ OneWay explizit setzen -->
+                <ProgressBar Value="{Binding FortschrittProzent, Mode=OneWay}" 
+                    Maximum="100" Height="10" 
+                    Margin="0,8,0,0"
+                    Foreground="DarkOrange"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Sportart Karten -->
+        <UniformGrid Columns="3" Margin="0,0,0,15">
+
+            <!-- Schwimmen -->
+            <Border Background="#E3F2FD" CornerRadius="8" Padding="15" Margin="0,0,5,0">
+                <StackPanel>
+                    <TextBlock Text="🏊 Schwimmen" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock Text="{Binding SchwimmenStunden, StringFormat={}{0:F1}h}" 
+                               FontSize="22" FontWeight="Bold" Foreground="#1565C0"/>
+                    <TextBlock Text="diese Woche" FontSize="11" Foreground="Gray"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Radfahren -->
+            <Border Background="#E8F5E9" CornerRadius="8" Padding="15" Margin="5,0,5,0">
+                <StackPanel>
+                    <TextBlock Text="🚴 Radfahren" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock Text="{Binding RadfahrenStunden, StringFormat={}{0:F1}h}" 
+                               FontSize="22" FontWeight="Bold" Foreground="#2E7D32"/>
+                    <TextBlock Text="diese Woche" FontSize="11" Foreground="Gray"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Laufen -->
+            <Border Background="#FFF3E0" CornerRadius="8" Padding="15" Margin="5,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="🏃 Laufen" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock Text="{Binding LaufenStunden, StringFormat={}{0:F1}h}" 
+                               FontSize="22" FontWeight="Bold" Foreground="#E65100"/>
+                    <TextBlock Text="diese Woche" FontSize="11" Foreground="Gray"/>
+                </StackPanel>
+            </Border>
+
+        </UniformGrid>
+
+        <!-- Diagramm -->
+        <Border Background="#F5F5F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="📈 Wochenvolumen letzte 8 Wochen" 
+                           FontWeight="Bold" Margin="0,0,0,10"/>
+                <lvc:CartesianChart Series="{Binding Series}"
+                                    XAxes="{Binding XAchse}"
+                                    Height="180"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Letztes Workout -->
+        <Border Background="#F5F5F5" CornerRadius="8" Padding="15">
+            <DockPanel>
+                <TextBlock Text="🕐 Letztes Workout" FontWeight="Bold" DockPanel.Dock="Top" Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding LetztesWorkout}" Foreground="Gray"/>
+            </DockPanel>
+        </Border>
+
+    </StackPanel>
+</UserControl>
