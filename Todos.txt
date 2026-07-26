@@ -1,52 +1,36 @@
 ╔══════════════════════════════════════════════════════════════════╗
-║              🏊 🚴 🏃  S W I M B I K E R U N  🏃 🚴 🏊         ║
+║              🏊 🚴 🏃  S W I M B I K E R U N  🏃 🚴 🏊         	   ║
 ║                     C# Projekt – TODO-Liste                      ║
 ╚══════════════════════════════════════════════════════════════════╝
 
-Letzte Aktualisierung: Juni 2026
+Letzte Aktualisierung: Juli 2026
 Projekt: SwimBikeRun | Sprache: C# | Repo: GitHub
 
+// 15.06.2026: Datei regelmäßig in GitHub-Projekt als Änderung pushen
+// 16.06.2026: Immer erst selbst ein bisschen knobeln zum lernen.
+// 01.07.2026: Claude einfach der Coding Goat
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   📋  OFFENE AUFGABEN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  [ ]  ✏️   WORKOUT BEARBEITEN
-            Schnelle Anpassung eines bestehenden Workouts
-            → UI-Element (Edit-Button) + ViewModel-Binding
-
-  [ ]  👁️   WORKOUT-DETAILANSICHT
-            WorkoutDetailView über „Anzeigen"-Button öffnen
-            → Navigation zur DetailView + Datenweitergabe per Parameter
-
-  [ ]  📊  STATISTISCHE AUSWERTUNGEN
-            Pace-Berechnung & Auswertungen in der Detailansicht
-
-            [ ]  Durchschnitts-Pace (km/h) automatisch
-                 berechnen und anzeigen                       ← OFFEN
-                 Formel: Pace = Distanz / Zeit (in Stunden)
-
-  [ ]  🔗  STRAVA API-ANBINDUNG
-            Automatischer Import von Aktivitäten via Strava API
-            → OAuth2-Authentifizierung + REST-Client einbinden
 
   [ ]  🔍  FILTERUNG DER LISTE
             Workouts nach Sportart oder Zeitraum filtern
             → FilterViewModel + LINQ-Abfragen auf ObservableCollection
 
-  [ ]  📈  DIAGRAMME / VERLAUFSANSICHT
-            Visuelle Darstellung der Trainingsdaten über Zeit
-            → z. B. LiveCharts2 oder OxyPlot einbinden
+  [ ]  🔋  Deload Button funktionsfähig machen
+		-> Im DashboardView die nächste Deload Woche anzeigen lassen
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ✅  ERLEDIGTE AUFGABEN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  [✓]  📋  Workout-Listenansicht
+  [✓]  📋   Workout-Listenansicht
             Alle Trainingseinheiten auf einen Blick
 
-  [✓]  ➕  Workout anlegen
+  [✓]  ➕   Workout anlegen
             Formular mit Datum, Sportart, Dauer, Distanz und Notiz
 
   [✓]  🏷️   Sportart-Auswahl per Dropdown
@@ -55,28 +39,61 @@ Projekt: SwimBikeRun | Sprache: C# | Repo: GitHub
   [✓]  🗑️   Workout löschen
             Ausgewähltes Workout wird aus der Datenbank entfernt
 
-  [✓]  📐  Distanz in WorkoutListView als DistanzKm ausgeben
+  [✓]  📐   Distanz in WorkoutListView als DistanzKm ausgeben
+
+  [✓]  📊   STATISTISCHE AUSWERTUNGEN
+                       
+  [✓]  ✏️   WORKOUT BEARBEITEN  	
+
+  [✓]  👁️   WORKOUT-DETAILANSICHT				 
+            WorkoutDetailView über „Anzeigen"-Button öffnen
+            → Navigation zur DetailView + Datenweitergabe per Parameter			
+
+  [✓]  📈   DIAGRAMME / VERLAUFSANSICHT
+            Visuelle Darstellung der Trainingsdaten über Zeit
+            -> LiveChartsCore.SkiaSharpView.WPF installiert
+	    -> Dashboard implementiert (DashboardView.xaml + DashboardViewModel.cs) implementiert
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   📌  PRIORITÄTEN (Empfehlung)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  🔴  HOCH     →  Durchschnitts-Pace berechnen
-                   Workout bearbeiten
-  🟡  MITTEL   →  WorkoutDetailView
-                   Filterung der Liste
-  🟢  NIEDRIG  →  Strava API
-                   Diagramme / Verlaufsansicht
+
+  🔴  HOCH     →  Dashboard optimieren
+			> Änderung der Farbe bei Erreichung des geplanten Wochenziels
+			> Deload passt so?
+			> CountDown zum nächsten Wettkampf
+
+  🟡  MITTEL   →  Filterung der Liste
+  🟢  NIEDRIG  →  Intervals.icu API
 
 
 ══════════════════════════════════════════════════════════════════
   💡  NOTIZEN & IDEEN
 ══════════════════════════════════════════════════════════════════
 
-  - Pace-Formel:  Zeit (min) / Distanz (km)  → z. B. 5:30 min/km
-  - Strava API Docs: https://developers.strava.com/docs/reference/
-  - Für Diagramme: LiveCharts2 (NuGet) gut geeignet für WPF/MAUI
   - GitHub Actions für automatische Build-Prüfung einrichten?
+  - Herzfrequenzzonen, TSS (Domänenwissen) -> Daten aus Intervals.icu verarbeiten
+  - n8n-Automatisierung (z.B. mit Telegram Webhook)
+  - Wettkampfcountdown
+  - Ernährung/Schlaf/RPE (braucht eigene Models)
+  - KI-Empfehlungen (braucht ausreichend Daten zum verarbeiten)
+
 
 ══════════════════════════════════════════════════════════════════
+  💡  NOTIZEN & IDEEN
+══════════════════════════════════════════════════════════════════
+
+   SOLID-Prinzipien
+
+   Git-commits
+   feat:     fertiges, funktionierendes Feature
+   fix:      Bugfix
+   wip:      Work in Progress, noch nicht fertig
+   chore:    Aufräumen, Platzhalter, Struktur ohne Logik
+   refactor: Code umgebaut ohne neue Funktion
+   docs:     Kommentare, Dokumentation
+
+
+════════════════════════════════════════════
