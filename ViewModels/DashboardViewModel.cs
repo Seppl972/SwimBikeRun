@@ -47,7 +47,9 @@ namespace SwimBikeRun.ViewModels
         private void LadeDaten()
         {
             var heute = DateTime.Today;
-            var wochenstart = heute.AddDays(-(int)heute.DayOfWeek + 1); // Montag
+            var wochenstart = heute.DayOfWeek == DayOfWeek.Sunday
+                ? DateTime.Today.AddDays(-6)
+                : heute.AddDays(-(int)heute.DayOfWeek + 1);
             var wochenende = wochenstart.AddDays(7);
 
             // Workouts dieser Woche
@@ -88,13 +90,14 @@ namespace SwimBikeRun.ViewModels
         {
             var labels = new List<string>();
             var werte = new List<double>();
+            var basisWochenstart = DateTime.Today.DayOfWeek == DayOfWeek.Sunday
+                ? DateTime.Today.AddDays(-6)
+                : DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 1);
 
             // Letzte 8 Wochen
             for (int i = 7; i >= 0; i--)
             {
-                var wochenstart = DateTime.Today
-                    .AddDays(-(int)DateTime.Today.DayOfWeek + 1)
-                    .AddDays(-7 * i);
+                var wochenstart = basisWochenstart.AddDays(-7 * i);
                 var wochenende = wochenstart.AddDays(7);
 
                 int kw = System.Globalization.ISOWeek.GetWeekOfYear(wochenstart);
