@@ -88,10 +88,19 @@
         </Border>
 
         <!-- Letztes Workout -->
-        <Border Background="#F5F5F5" CornerRadius="8" Padding="15">
+        <Border Background="#F5F5F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
             <DockPanel>
                 <TextBlock Text="🕐 Letztes Workout" FontWeight="Bold" DockPanel.Dock="Top" Margin="0,0,0,5"/>
                 <TextBlock Text="{Binding LetztesWorkout}" Foreground="Gray"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Nächste geplante Deload Woche -->
+        <!-- ToDo´s offen -->
+        <Border Background="#F5F5F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <DockPanel>
+                <TextBlock Text="🔋 Nächste Deload Woche" FontWeight="Bold" DockPanel.Dock="Top" Margin="0,0,0,5"/>
+                <TextBlock Text="KW XY" Foreground="Gray"/>
             </DockPanel>
         </Border>
 
