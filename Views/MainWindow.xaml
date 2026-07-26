@@ -45,7 +45,7 @@
 		<!-- Sidebar links: Navigation für einen Disziplinen -->
 		<StackPanel DockPanel.Dock="Left" Background="DarkOrange" Width="100">
             <Button Content="Dashboard"  Height="45" Margin="10,5" Command="{Binding DashboardCommand}"/>
-            <Button Content="Workouts" Height="45" Margin="10,5"/>
+            <Button Content="Workouts" Height="45" Margin="10,5" Command="{Binding WorkoutListeCommand}"/>
             <Button Content="Races" Height="45" Margin="10,5"/>
             <Button Content="Swim" Height="45" Margin="10,5"/>
 			<Button Content="Bike" Height="45" Margin="10,5"/>

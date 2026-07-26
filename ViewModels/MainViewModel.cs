@@ -26,6 +26,7 @@ namespace SwimBikeRun.ViewModels
             NeuCommand = new RelayCommand(OeffneWorkoutAnlegen);
             AnzeigenCommand = new RelayCommand(OeffneWorkoutDetail);
             DashboardCommand = new RelayCommand(OeffneDashboard);
+            WorkoutListeCommand = new RelayCommand(OeffneWorkoutListe);
         }
 
         // AktuelleView ist die Eigenschaft, die die aktuell angezeigte View steuert
@@ -41,6 +42,7 @@ namespace SwimBikeRun.ViewModels
         }
 
         public ICommand DashboardCommand { get; }
+        public ICommand WorkoutListeCommand { get; }
         public ICommand NeuCommand { get; }
         public ICommand AnzeigenCommand { get; }
         public ICommand LöschenCommand => new RelayCommand(() =>
@@ -74,6 +76,11 @@ namespace SwimBikeRun.ViewModels
         private void OeffneWorkoutAnlegen()
         {
             AktuelleView = new WorkoutAnlegenViewModel(_dbContext, ZurückZurListe); // dbContext weitergeben, damit die Anlegen-View auch Zugriff auf die Datenbank hat            
+        }
+
+        private void OeffneWorkoutListe()
+        {
+            AktuelleView = new WorkoutListeViewModel(_dbContext); // dbContext weitergeben, damit die Listen-View auch Zugriff auf die Datenbank hat
         }
 
         private void OeffneWorkoutDetail()
