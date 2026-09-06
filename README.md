@@ -93,3 +93,4 @@ Die Anwendung folgt dem **MVVM-Muster** (Model – View – ViewModel):
 - **View** – reines XAML, gebunden per `DataBinding` ans ViewModel
 
 Die Navigation zwischen Views erfolgt über `AktuelleView` im `MainViewModel` in Kombination mit `DataTemplates` im `MainWindow`.
+ 
