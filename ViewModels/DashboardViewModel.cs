@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace SwimBikeRun.ViewModels
 {
@@ -21,8 +22,21 @@ namespace SwimBikeRun.ViewModels
         public double WochenZiel => 10.0; // 10h/Woche Ziel
 
         // Fortschritt in Prozent für Progressbar
-        public double FortschrittProzent =>
+        public double FortschrittProzent => 
             Math.Min((GesamtStunden / WochenZiel) * 100, 100);
+        // Methode wird aktiv aufgerufen
+        // -> Für WPF Binding, damit es wie eine Variable gelesen werden kann
+        // -> von Methode zu Property umgebaut
+
+        // hier weiter programmieren
+        public String FortschrittFarbe()
+        {
+            if (GesamtStunden < 10)
+                return "DarkOrange";
+            else 
+                return "Green";
+        }
+            
 
         // Aktuelle Kalenderwoche
         public string AktuelleWoche =>

@@ -87,6 +87,15 @@
             </StackPanel>
         </Border>
 
+        <!-- Nächstes Rennen -->
+        <Border Background="#F5F5F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="🏅 Nächste Rennen" FontWeight="Bold" DockPanel.Dock="Top" Margin="0,0,0,5"/>
+                <TextBlock Text="Mainz - Sprintdistanz - TCEC Vereinsmeisterschaft" Foreground="Gray"/>
+                <TextBlock Text="Mainz - 5k Laufen - Firmenlauf" Foreground="Gray"/>
+            </StackPanel>
+        </Border>
+        
         <!-- Letztes Workout -->
         <Border Background="#F5F5F5" CornerRadius="8" Padding="15" Margin="0,0,0,15">
             <DockPanel>
