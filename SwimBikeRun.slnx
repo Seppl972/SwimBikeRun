@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../SwimBikeRun.Tests/SwimBikeRun.Tests.csproj" Id="466e14b7-65c2-4220-af33-35ebc9b04df8" />
   <Project Path="SwimBikeRun.csproj" />
 </Solution>
