@@ -7,7 +7,8 @@ using System.ComponentModel;        // INotifyPropertyChanged, PropertyChangedEv
 using System.Windows.Input;         // ICommand
 using SwimBikeRun.Data;             // ApplicationDbContext
 using SwimBikeRun.Helpers;          // RelayCommand
-using System.Windows;               // ← für MessageBox
+using System.Windows;
+using SwimBikeRun.Services;         
 
 
 
@@ -16,10 +17,12 @@ namespace SwimBikeRun.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly ImportService _importService;
 
-        public MainViewModel(ApplicationDbContext dbContext)
+        public MainViewModel(ApplicationDbContext dbContext, ImportService importService)
         {
             _dbContext = dbContext;
+            _importService = importService;
             _dbContext.Database.EnsureCreated();    // Datenbank beim Start anlegen/migrieren
             AktuelleView = new DashboardViewModel(_dbContext);    // Standardmäßig die Listenansicht anzeigen
 
@@ -27,6 +30,7 @@ namespace SwimBikeRun.ViewModels
             AnzeigenCommand = new RelayCommand(OeffneWorkoutDetail);
             DashboardCommand = new RelayCommand(OeffneDashboard);
             WorkoutListeCommand = new RelayCommand(OeffneWorkoutListe);
+            ImportCommand = new RelayCommand(ImportiereWorkouts);
         }
 
         // AktuelleView ist die Eigenschaft, die die aktuell angezeigte View steuert
@@ -41,6 +45,7 @@ namespace SwimBikeRun.ViewModels
             }
         }
 
+        public ICommand ImportCommand { get; }
         public ICommand DashboardCommand { get; }
         public ICommand WorkoutListeCommand { get; }
         public ICommand NeuCommand { get; }
@@ -116,5 +121,10 @@ namespace SwimBikeRun.ViewModels
             AktuelleView = new DashboardViewModel(_dbContext);
         }
 
+        private async void ImportiereWorkouts()
+        {
+            await _importService.ImportiereAlleWorkoutsAsync();
+            AktuelleView = new WorkoutListeViewModel(_dbContext);
+        }
     }
 }  

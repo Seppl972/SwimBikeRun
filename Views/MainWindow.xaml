@@ -35,7 +35,8 @@
 		<!-- Header: Toolbar für CRUD-Operationen -->
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="DarkOrange" Height="30">
 			<Button Content="Einstellungen"  Width="80" Margin="10,5"/>
-			<Button Content="Neu" Command="{Binding NeuCommand}" Width="80" Margin="5"/>
+            <Button Content="Import" Command="{Binding ImportCommand}"  Width="80" Margin="10,5"/>
+            <Button Content="Neu" Command="{Binding NeuCommand}" Width="80" Margin="5"/>
             <Button Content="Anzeigen" Command="{Binding AnzeigenCommand}" Width="80" Margin="5"/>
 			<Button Content="Bearbeiten"  Width="80" Margin="5" Command="{Binding BearbeitenCommand}"/>
 			<Button Content="Löschen" Command="{Binding LöschenCommand}" Width="80" Margin="5" />

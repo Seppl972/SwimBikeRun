@@ -4,6 +4,9 @@ using SwimBikeRun.Data;
 using SwimBikeRun.Views;
 using SwimBikeRun.ViewModels;
 using System.Windows;
+using SwimBikeRun.Services;
+using SwimBikeRun.Converters;
+using Microsoft.Extensions.Configuration;
 
 namespace SwimBikeRun
 {
@@ -26,15 +29,29 @@ namespace SwimBikeRun
 
         private static void ConfigureServices(IServiceCollection services)
         {
+            // Konfiguration registrieren
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddUserSecrets<App>()
+                .Build();
+
+            // ← IConfiguration per DI verfügbar machen
+            services.AddSingleton<IConfiguration>(config);  
+
+
             // SQLite + EF Core
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite("Data Source=swimbikerun.db"));
 
             // ViewModels registrieren
             services.AddTransient<MainViewModel>();
-
             // Fenster registrieren
             services.AddTransient<MainWindow>();
+
+            // API Services registrieren
+            services.AddTransient<IntervalsService>();
+            services.AddTransient<IntervalsConverter>();
+            services.AddTransient<ImportService>();
         }
     }
 }
