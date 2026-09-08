@@ -3,24 +3,36 @@
 ║                     C# Projekt – TODO-Liste                      ║
 ╚══════════════════════════════════════════════════════════════════╝
 
-Letzte Aktualisierung: Juli 2026
+Letzte Aktualisierung: September 2026
 Projekt: SwimBikeRun | Sprache: C# | Repo: GitHub
 
 // 15.06.2026: Datei regelmäßig in GitHub-Projekt als Änderung pushen
 // 16.06.2026: Immer erst selbst ein bisschen knobeln zum lernen.
 // 01.07.2026: Claude einfach der Coding Goat
+// 06.09.2026: Claude Pro als Senior-Pair Programmer eingestellt
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   📋  OFFENE AUFGABEN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+  [ ] 🔁  Duplikate beim Import vermeiden
+          -> Prüfen ob Workout bereits in DB existiert vor dem Speichern
+          -> z.B. anhand von Datum + Sportart + Dauer
+
+  [ ] 📅  Datum-Parameter für Import konfigurierbar machen
+          -> aktuell hardcoded auf 2026-01-01
+          -> z.B. letztes Import-Datum aus DB auslesen
+
+  [ ] 🎨  Änderung der Farbe bei Erreichung des geplanten Wochenziels
+          -> Brush Property im DashboardViewModel
+          -> DataTrigger oder Brush Binding in DashboardView.xaml
 
   [ ]  🔍  FILTERUNG DER LISTE
             Workouts nach Sportart oder Zeitraum filtern
             → FilterViewModel + LINQ-Abfragen auf ObservableCollection
 
   [ ]  🔋  Deload Button funktionsfähig machen
-		-> Im DashboardView die nächste Deload Woche anzeigen lassen
+           -> Im DashboardView die nächste Deload Woche anzeigen lassen
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -42,50 +54,85 @@ Projekt: SwimBikeRun | Sprache: C# | Repo: GitHub
   [✓]  📐   Distanz in WorkoutListView als DistanzKm ausgeben
 
   [✓]  📊   STATISTISCHE AUSWERTUNGEN
-                       
-  [✓]  ✏️   WORKOUT BEARBEITEN  	
+            PaceService mit sportartspezifischer Berechnung (min/km, min/100m, km/h)
 
-  [✓]  👁️   WORKOUT-DETAILANSICHT				 
+  [✓]  ✏️   WORKOUT BEARBEITEN
+
+  [✓]  👁️   WORKOUT-DETAILANSICHT
             WorkoutDetailView über „Anzeigen"-Button öffnen
-            → Navigation zur DetailView + Datenweitergabe per Parameter			
+            → Navigation zur DetailView + Datenweitergabe per Parameter
 
   [✓]  📈   DIAGRAMME / VERLAUFSANSICHT
             Visuelle Darstellung der Trainingsdaten über Zeit
             -> LiveChartsCore.SkiaSharpView.WPF installiert
-	    -> Dashboard implementiert (DashboardView.xaml + DashboardViewModel.cs) implementiert
+            -> Dashboard implementiert (DashboardView.xaml + DashboardViewModel.cs)
+
+  [✓]  🧪   UNIT TESTS
+            xUnit Testprojekt SwimBikeRun.Tests angelegt
+            -> PaceService Tests (Laufen, Schwimmen, Radfahren)
+            -> Edge Case Tests (Dauer = 0, Distanz = 0 → null)
+            -> Bug gefunden & gefixt: PaceService prüft jetzt dauer && distanz > 0
+
+  [✓]  🔗   INTERVALS.ICU API ANBINDUNG ✅
+            -> IntervalsActivity Model für rohe API Daten
+            -> IntervalsConverter (Meter→km, Sekunden→Minuten, String→Enum)
+            -> IntervalsService mit HttpClient & Basic Auth
+            -> ImportService koordiniert den gesamten Import
+            -> Credentials via secrets.json geschützt
+            -> IConfiguration per DI registriert
+            -> Nullable Fallback im Converter für DauerMinuten & DistanzKm
+            -> Echte Workouts von Intervals.icu erfolgreich importiert ✅
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   📌  PRIORITÄTEN (Empfehlung)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-
-  🔴  HOCH     →  Dashboard optimieren
-			> Änderung der Farbe bei Erreichung des geplanten Wochenziels
-			> Deload passt so?
-			> CountDown zum nächsten Wettkampf
-
+  🔴  HOCH     →  Duplikate beim Import vermeiden
+                   Farbe bei Wochenziel ändern
   🟡  MITTEL   →  Filterung der Liste
-  🟢  NIEDRIG  →  Intervals.icu API
+                   Deload Button
+                   Datum-Parameter konfigurierbar machen
+  🟢  NIEDRIG  →  Wettkampf-Countdown (neue Wettkampf Klasse)
+                   Herzfrequenzzonen & TSS
+                   GitHub Actions für automatische Build-Prüfung
 
 
 ══════════════════════════════════════════════════════════════════
   💡  NOTIZEN & IDEEN
 ══════════════════════════════════════════════════════════════════
-
-  - GitHub Actions für automatische Build-Prüfung einrichten?
   - Herzfrequenzzonen, TSS (Domänenwissen) -> Daten aus Intervals.icu verarbeiten
   - n8n-Automatisierung (z.B. mit Telegram Webhook)
   - Wettkampfcountdown
   - Ernährung/Schlaf/RPE (braucht eigene Models)
   - KI-Empfehlungen (braucht ausreichend Daten zum verarbeiten)
-
+  - Wochenvolumen Jahresübersicht
+  - Background Service für automatischen Import (kein manueller Button nötig)
 
 ══════════════════════════════════════════════════════════════════
-  💡  NOTIZEN & IDEEN
+  📚  LEARNINGS – Was noch wackelt
 ══════════════════════════════════════════════════════════════════
+  - Namespaces & Usings         → fehlende Imports kosten unnötig Zeit
+  - XAML-Struktur               → DataTemplates gehören ins MainWindow, nicht in UserControls
+  - Property vs. Methode        → WPF Binding funktioniert nur mit Properties, nie mit Methoden ()
+  - Binding-Konzepte            → TwoWay/OneWay noch nicht vollständig verinnerlicht
+  - Commits                     → sofort nach jeder fertigen Einheit committen, nicht am Ende!
+  - EF Core Migrationen         → DB Struktur ändert sich nicht automatisch, immer Migration nötig!
+  - Nullable in DB              → NOT NULL Constraint beachten, DB und Model müssen übereinstimmen
+  - Nächste Lernziele:
+      [x] Unit Tests für Services schreiben (z.B. PaceService)
+      [x] Async/Await für API-Anbindung
+      [ ] Git Branching (feature branches, pull requests)
+      [ ] LINQ tiefer lernen (Filterung, Gruppierung)
+      [ ] Duplikat-Erkennung mit LINQ
 
-   SOLID-Prinzipien
+══════════════════════════════════════════════════════════════════
+  💡  Technische Informationen
+══════════════════════════════════════════════════════════════════
+   Prinzipien:
+   [x] SOLID-Prinzipien
+   [x] Single Responsibility Principle
+   [x] Dependency Injection
 
    Git-commits
    feat:     fertiges, funktionierendes Feature
@@ -94,6 +141,4 @@ Projekt: SwimBikeRun | Sprache: C# | Repo: GitHub
    chore:    Aufräumen, Platzhalter, Struktur ohne Logik
    refactor: Code umgebaut ohne neue Funktion
    docs:     Kommentare, Dokumentation
-
-
 ════════════════════════════════════════════
