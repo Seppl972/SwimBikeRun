@@ -11,6 +11,7 @@ namespace SwimBikeRun.Converters // Ordner nicht vergessen == namespace
     {
         { "Run",  SportartTyp.Laufen },
         { "Ride", SportartTyp.Radfahren },
+        { "VirtualRide", SportartTyp.Radfahren },
         { "Swim", SportartTyp.Schwimmen },
         { "WeightTraining", SportartTyp.Krafttraining  },
         { "Yoga", SportartTyp.Yoga }
