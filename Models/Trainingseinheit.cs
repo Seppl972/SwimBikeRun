@@ -30,6 +30,8 @@ namespace SwimBikeRun.Models
         Schwimmen = 0,
         Radfahren = 1,
         Laufen = 2,
+        Krafttraining = 3,
+        Yoga = 4,
     }
 
 }
