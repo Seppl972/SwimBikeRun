@@ -15,6 +15,8 @@ namespace SwimBikeRun.Services
                 SportartTyp.Schwimmen => distanz > 0 && dauer > 0 ? (dauer / distanz) / 10 : null,
                 SportartTyp.Radfahren => distanz > 0 && dauer > 0 ? distanz / ((double)dauer / 60) : null,
                 SportartTyp.Laufen => distanz > 0 && dauer > 0 ? dauer / distanz : null,
+                SportartTyp.Krafttraining => null,  // Krafttraining hat keine Pace
+                SportartTyp.Yoga => null,           // Yoga hat keine Pace
                 _ => null
             };
         }
