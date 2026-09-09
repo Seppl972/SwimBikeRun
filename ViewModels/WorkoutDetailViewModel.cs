@@ -23,7 +23,8 @@ namespace SwimBikeRun.ViewModels
         public int? DauerMinuten { get; }
         public double? DistanzKm { get; }
         public double? DurchschnittsPace { get; }
-        public string? Notiz { get; }
+        public string Titel { get; }
+        public string? Beschreibung { get; }
 
         public ICommand ZurückCommand { get; }
 
@@ -38,7 +39,8 @@ namespace SwimBikeRun.ViewModels
             DauerMinuten = workout.DauerMinuten;
             DistanzKm = workout.DistanzKm;
             DurchschnittsPace = workout.DurchschnittsPace;
-            Notiz = workout.Notiz;
+            Titel = workout.Titel;
+            Beschreibung = workout.Beschreibung;
 
             ZurückCommand = new RelayCommand(() => _zurückAction());
         }

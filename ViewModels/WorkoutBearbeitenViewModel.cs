@@ -20,7 +20,8 @@ namespace SwimBikeRun.ViewModels
         public SportartTyp Sportart { get; set; }
         public int? DauerMinuten { get; set; }
         public double? DistanzKm { get; set; }
-        public string? Notiz { get; set; }
+        public string Titel { get; set; }
+        public string? Beschreibung { get; set; }
 
         public ICommand SpeichernCommand { get; }
         public ICommand ZurückCommand { get; }
@@ -36,7 +37,8 @@ namespace SwimBikeRun.ViewModels
             Sportart = workout.Sportart;
             DauerMinuten = workout.DauerMinuten;
             DistanzKm = workout.DistanzKm;
-            Notiz = workout.Notiz;
+            Titel = workout.Titel;
+            Beschreibung = workout.Titel;
 
             SpeichernCommand = new RelayCommand(Speichern);
             ZurückCommand = new RelayCommand(Zurück);
@@ -49,7 +51,8 @@ namespace SwimBikeRun.ViewModels
             _zuBearbeitendesWorkout.Sportart = Sportart;
             _zuBearbeitendesWorkout.DauerMinuten = DauerMinuten;
             _zuBearbeitendesWorkout.DistanzKm = DistanzKm;
-            _zuBearbeitendesWorkout.Notiz = Notiz;
+            _zuBearbeitendesWorkout.Titel = Titel;
+            _zuBearbeitendesWorkout.Beschreibung = Beschreibung;
 
             _dbContext.SaveChanges(); // ← kein Add() nötig, nur speichern!
             _zurückAction();

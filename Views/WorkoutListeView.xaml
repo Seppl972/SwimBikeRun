@@ -18,7 +18,8 @@
                 <GridViewColumn Header="// Dauer (Min)" DisplayMemberBinding="{Binding DauerMinuten}" Width="90"/>
                 <GridViewColumn Header="// Distanz (km)" DisplayMemberBinding="{Binding DistanzKm}" Width="90"/>
                 <GridViewColumn Header="// Durchschnitt-Pace (km/h)" DisplayMemberBinding="{Binding DurchschnittsPace}" Width="150"/>
-                <GridViewColumn Header="// Notiz" DisplayMemberBinding="{Binding Notiz}" Width="200"/>
+                <GridViewColumn Header="// Titel" DisplayMemberBinding="{Binding Titel}" Width="80"/>
+                <GridViewColumn Header="// Beschreibung" DisplayMemberBinding="{Binding Beschreibung}" Width="100"/>
             </GridView>
         </ListView.View>
     </ListView>

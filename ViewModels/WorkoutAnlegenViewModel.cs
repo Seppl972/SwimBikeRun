@@ -16,9 +16,10 @@ namespace SwimBikeRun.ViewModels
         public DateTime Datum { get; set; } = DateTime.Today;
         public SportartTyp Sportart { get; set; }
         public int DauerMinuten { get; set; }
-        public double DistanzKm { get; set; }
+        public double? DistanzKm { get; set; }
         public double? DurchschnittsPace { get; set; }
-        public string Notiz { get; set; } = "";
+        public string Titel { get; set; }
+        public string? Beschreibung { get; set; }
 
 
         public ICommand SpeichernCommand { get; }
@@ -44,7 +45,8 @@ namespace SwimBikeRun.ViewModels
                 Sportart = Sportart,
                 DauerMinuten = DauerMinuten,
                 DistanzKm = DistanzKm,
-                Notiz = Notiz
+                Titel = Titel,
+                Beschreibung = Beschreibung
                 // Id wird automatisch von EF vergeben!
                 
             };
