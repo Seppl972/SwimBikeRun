@@ -24,10 +24,10 @@ namespace SwimBikeRun.Services
                 new AuthenticationHeaderValue("Basic", credentials);
         }
 
-        public async Task<string> GetAktivitätenAsync()
+        public async Task<string> GetAktivitätenVonIntervalsAsync()
         {
             var url = $"https://intervals.icu/api/v1/athlete/{_athleteId}/activities?oldest=2026-01-01";
-            var response = await _client.GetAsync(url);
+            var response = await _client.GetAsync(url); // <- das ist der HTTP GET
             return await response.Content.ReadAsStringAsync();
         }
     }

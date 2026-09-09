@@ -25,7 +25,7 @@ namespace SwimBikeRun.Services
         public async Task ImportiereAlleWorkoutsAsync()
         {
             // 1. JSON holen
-            var json = await _intervalsService.GetAktivitätenAsync();
+            var json = await _intervalsService.GetAktivitätenVonIntervalsAsync();
 
             // 2. Deserialisieren
             var activities = JsonSerializer.Deserialize<List<IntervalsActivity>>(json);
