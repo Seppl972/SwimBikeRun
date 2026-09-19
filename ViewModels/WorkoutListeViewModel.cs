@@ -53,5 +53,6 @@ namespace SwimBikeRun.ViewModels
             // MessageBox.Show("Workout gelöscht!");
         }
 
+
     }
 }
