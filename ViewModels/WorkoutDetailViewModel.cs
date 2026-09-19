@@ -22,8 +22,8 @@ namespace SwimBikeRun.ViewModels
         public SportartTyp Sportart { get; }
         public int? DauerMinuten { get; }
         public double? DistanzKm { get; }
-        public double? DurchschnittsPace { get; }
-        public string Titel { get; }
+        public string? DurchschnittsPaceFormatiert { get; }
+        public string? Titel { get; }
         public string? Beschreibung { get; }
 
         public ICommand ZurückCommand { get; }
@@ -38,7 +38,7 @@ namespace SwimBikeRun.ViewModels
             Sportart = workout.Sportart;
             DauerMinuten = workout.DauerMinuten;
             DistanzKm = workout.DistanzKm;
-            DurchschnittsPace = workout.DurchschnittsPace;
+            DurchschnittsPaceFormatiert = workout.DurchschnittsPaceFormatiert;
             Titel = workout.Titel;
             Beschreibung = workout.Beschreibung;
 
