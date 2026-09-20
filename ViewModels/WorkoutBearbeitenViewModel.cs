@@ -38,7 +38,7 @@ namespace SwimBikeRun.ViewModels
             DauerMinuten = workout.DauerMinuten;
             DistanzKm = workout.DistanzKm;
             Titel = workout.Titel;
-            Beschreibung = workout.Titel;
+            Beschreibung = workout.Beschreibung;
 
             SpeichernCommand = new RelayCommand(Speichern);
             ZurückCommand = new RelayCommand(Zurück);

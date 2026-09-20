@@ -16,7 +16,7 @@
                 <GridViewColumn Header="// Datum" DisplayMemberBinding="{Binding Datum, StringFormat=dd.MM.yyyy}" Width="90"/>
                 <GridViewColumn Header="// Sportart" DisplayMemberBinding="{Binding Sportart}" Width="80"/>
                 <GridViewColumn Header="// Dauer (Min)" DisplayMemberBinding="{Binding DauerMinuten}" Width="90"/>
-                <GridViewColumn Header="// Distanz (km)" DisplayMemberBinding="{Binding DistanzKm}" Width="90"/>
+                <GridViewColumn Header="// Distanz (km)" DisplayMemberBinding="{Binding DistanzKm, StringFormat={}{0:F2}}" Width="90"/>
                 <GridViewColumn Header="// Pace" DisplayMemberBinding="{Binding DurchschnittsPaceFormatiert}" Width="150"/>
                 <GridViewColumn Header="// Titel" DisplayMemberBinding="{Binding Titel}" Width="80"/>
                 <GridViewColumn Header="// Beschreibung" DisplayMemberBinding="{Binding Beschreibung}" Width="100"/>
