@@ -39,9 +39,9 @@ SwimBikeRun ist ein persönliches Trainingstagebuch für Triathleten. Ziel ist e
 - [x] **Pace-Berechnung** – sportartspezifisch via `PaceService` (min/km, min/100m, km/h)
 - [x] **Intervals.icu API Import** – Workouts per Button aus Intervals.icu importieren
 - [x] **Unit Tests** – PaceService mit xUnit getestet inkl. Edge Cases
+- [x] **Duplikate beim Import vermeiden**
 
 ### Geplant
-- [ ] Duplikate beim Import vermeiden
 - [ ] Datum-Parameter für Import konfigurierbar machen
 - [ ] Farbe der Fortschrittsbalken bei erreichtem Wochenziel ändern
 - [ ] Filterung der Liste nach Sportart oder Zeitraum
